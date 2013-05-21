@@ -1,0 +1,31 @@
+--
+-- 1 step
+--
+start n = node(1)
+match n-[:FRIEND_OF]->m
+return count(m);
+
+--
+-- 2 step
+--
+start n = node(1)
+match n-[:FRIEND_OF]->()-[:FRIEND_OF]->m
+return count(distinct m);
+
+--
+-- 3 step
+--
+start n = node(1)
+match n-[:FRIEND_OF*3]->m
+return count(distinct m);
+
+start n = node(1)
+match n-[:FRIEND_OF*3]->m
+return m;
+
+--
+-- 4 step
+--
+start n = node(1)
+match n-[:FRIEND_OF*4]->m
+return count(distinct m);
