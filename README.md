@@ -24,7 +24,7 @@ friends-2: 1430, 620 ms
 
 friends-3: 1999, 20630 ms
 
-### Neo4jServer
+### Neo4j Server
 
 If you want to browse the Neo4j graph-database use just created:
 
