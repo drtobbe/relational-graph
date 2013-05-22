@@ -24,3 +24,10 @@ friends-2: 1430, 620 ms
 
 friends-3: 1999, 20630 ms
 
+### Neo4jServer
+
+If you want to try the browse Neo4j database use just created:
+
+		$ mvn -f server.xml exec:exec
+		$ open  http://localhost:7575/webadmin/#/data/search/1/
+
