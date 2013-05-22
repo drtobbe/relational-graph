@@ -10,14 +10,14 @@ In order to try, type this in your console:
 		mvn clean install
 		mvn exec:exec
 
-############### NEO4J
+### NEO4J
 friends-1: List(Map(count(distinct m) -> 50)), 857 ms
 
 friends-2: List(Map(count(distinct m) -> 1430)), 475 ms
 
 friends-3: List(Map(count(distinct m) -> 1999)), 1881 ms
 
-################ H2 
+### H2 
 friends-1: 50, 106 ms
 
 friends-2: 1430, 620 ms
