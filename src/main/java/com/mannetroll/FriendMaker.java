@@ -3,8 +3,8 @@ package com.mannetroll;
 import java.util.LinkedList;
 
 public class FriendMaker {
-    public static int nodes = 10000;
-    public static int edges = 20;
+    public static int nodes = 2000;
+    public static int edges = 50;
     public static int[][] friendsOf = new int[nodes][edges];
 
     public static int[][] makeFriends() {

@@ -1,15 +1,19 @@
 package com.mannetroll.db.graph;
 
+import org.neo4j.cypher.ExecutionEngine;
+import org.neo4j.cypher.ExecutionResult;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.RelationshipType;
 import org.neo4j.graphdb.Transaction;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 import org.neo4j.graphdb.factory.GraphDatabaseSettings;
+import org.neo4j.kernel.impl.util.StringLogger;
 
 import com.mannetroll.FriendMaker;
 
 public class Neo4j {
+    private ExecutionEngine engine;
 
     public Neo4j() {
     }
@@ -21,6 +25,7 @@ public class Neo4j {
                 GraphDatabaseSettings.node_auto_indexing, "true").setConfig(
                 GraphDatabaseSettings.relationship_auto_indexing, "true").newGraphDatabase();
         registerShutdownHook(graphDb);
+        engine = new ExecutionEngine(graphDb, StringLogger.SYSTEM);
 
         //Relationship relation;
         Node node;
@@ -61,6 +66,38 @@ public class Neo4j {
                 graphDb.shutdown();
             }
         });
+    }
+
+    public void friends() {
+        System.out.println("############### NEO4J ###############");
+        ExecutionResult result = null;
+        long start;
+        start = System.currentTimeMillis();
+        result = engine.execute("start n = node(1) match n-[:FRIEND_OF]->m return count(distinct m);");
+        if (result.hasNext()) {
+            System.out.println("friends-1: " + result.toList() + ", " + (System.currentTimeMillis() - start) + " ms");
+        }
+
+        start = System.currentTimeMillis();
+        result = engine.execute("start n = node(1) match n-[:FRIEND_OF]->()-[:FRIEND_OF]->m return count(distinct m);");
+        if (result.hasNext()) {
+            System.out.println("friends-2: " + result.toList() + ", " + (System.currentTimeMillis() - start) + " ms");
+        }
+
+        start = System.currentTimeMillis();
+        result = engine.execute("start n = node(1) match n-[:FRIEND_OF*3]->m return count(distinct m);");
+        if (result.hasNext()) {
+            System.out.println("friends-3: " + result.toList() + ", " + (System.currentTimeMillis() - start) + " ms");
+        }
+
+        /*
+        start = System.currentTimeMillis();
+        result = engine.execute("start n = node(1) match n-[:FRIEND_OF*4]->m return count(distinct m);");
+        if (result.hasNext()) {
+            System.out.println("friends-4: " + result.toList() + ", " + (System.currentTimeMillis() - start) + " ms");
+        }
+        */
+
     }
 
 }
