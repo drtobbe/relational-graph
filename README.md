@@ -26,8 +26,8 @@ friends-3: 1999, 20630 ms
 
 ### Neo4jServer
 
-If you want to try the browse Neo4j database use just created:
+If you want to browse the Neo4j graph-database use just created:
 
 		$ mvn -f server.xml exec:exec
-		$ open  http://localhost:7575/webadmin/#/data/search/1/
+		$ open http://localhost:7575/webadmin/#/data/search/1/
 
