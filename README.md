@@ -5,10 +5,10 @@ Comparison of performance between a relational and a graph database regarding fr
 
 In order to try, type this in your console:
 
-		git clone https://github.com/drtobbe/relational-graph.git
-		cd relational-graph
-		mvn clean install
-		mvn exec:exec
+		$ git clone https://github.com/drtobbe/relational-graph.git
+		$ cd relational-graph
+		$ mvn clean install
+		$ mvn exec:exec
 
 ### NEO4J
 friends-1: List(Map(count(distinct m) -> 50)), 857 ms
