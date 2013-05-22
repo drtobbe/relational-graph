@@ -1,4 +1,4 @@
-relational-graph
+Relational-Graph
 ================
 
 Comparison of performance between a relational and a graph database regarding friends of friends requests
@@ -10,7 +10,7 @@ In order to try, type this in your console:
 		$ mvn clean install
 		$ mvn exec:exec
 
-### NEO4J
+### Neo4j
 friends-1: List(Map(count(distinct m) -> 50)), 857 ms
 
 friends-2: List(Map(count(distinct m) -> 1430)), 475 ms
